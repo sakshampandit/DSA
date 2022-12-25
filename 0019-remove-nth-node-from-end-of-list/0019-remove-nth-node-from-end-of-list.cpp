@@ -19,8 +19,9 @@ public:
         ListNode*b=head;
         while(n--)
         b=b->next;    
-        if(b==NULL)
-            return a->next;
+       if(b==NULL)
+        return a->next;
+        
         while(b->next!=NULL)
         {
             a=a->next;
