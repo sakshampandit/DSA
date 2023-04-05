@@ -13,6 +13,12 @@ for (int i=0; i < size; i++)
 
 // } Driver Code Ends
 //User function Template for C++
+// Step 1:- Here we created a data type so as to store the value,the index of the array and the position in that particular array
+// Step 2:- Then we took a comparator to compare the to data values and return its answer to the priority queue
+// Step 3:- We make a priority queue ie,priority_queue<data type,vector of vectors,comparator for every time comparing>
+// Step 4:- then we will enter k value first in our queue in the form of user defined data type
+// Step 5:- Now we will run the loop till queue is empty and extract the minimum value which is at the top and simultaneously poping it
+// Step 6:- push the value in the answer vector and then check if there is next element in that particular array from which value was extracted 
 class data
 {   public:
     int val,vpos,apos;
