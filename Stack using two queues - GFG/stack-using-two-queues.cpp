@@ -57,13 +57,12 @@ public:
 void QueueStack :: push(int x)
 {
         // Your Code
+        q2.push(x);
         while(!q1.empty())
         {
             q2.push(q1.front());
             q1.pop();
-            
         }
-        q1.push(x);
         while(!q2.empty())
         {
             q1.push(q2.front());
@@ -73,10 +72,14 @@ void QueueStack :: push(int x)
 
 //Function to pop an element from stack using two queues. 
 int QueueStack :: pop()
-{        if(q1.empty() && q2.empty())
-         return -1;
-        // Your Code  
+{
+        // Your Code
+        if(q1.empty() && q2.empty())
+        return -1;
+        
         int y=q1.front();
         q1.pop();
         return y;
+        
+        
 }
