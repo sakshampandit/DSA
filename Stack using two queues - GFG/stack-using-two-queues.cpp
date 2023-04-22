@@ -73,13 +73,13 @@ void QueueStack :: push(int x)
 //Function to pop an element from stack using two queues. 
 int QueueStack :: pop()
 {
-        // Your Code
+        // Your Code   
         if(q1.empty() && q2.empty())
         return -1;
-        
-        int y=q1.front();
-        q1.pop();
-        return y;
-        
-        
+        else
+        {
+            int y=q1.front();
+            q1.pop();
+            return y;
+        }
 }
