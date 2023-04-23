@@ -15,7 +15,8 @@ class Solution{
         while(left<=right)
         {
            
-           if(leftbar<rightbar){
+           if(leftbar<rightbar)//we will find the second highest building which will be the limit to fill water
+           {
             if(arr[left]>leftbar)
             {
                 leftbar=arr[left];
