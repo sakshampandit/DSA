@@ -29,6 +29,8 @@ class Solution {
         }
         
         // string ans = "";
+        if(s.empty())
+        return "0";
         while(!s.empty())
         {
             nums[n-1] = (s.top());
@@ -40,10 +42,9 @@ class Solution {
         // reverse(ans.begin(), ans.end());
         // return ans == "" ? "0" : ans;
         // cout << ans;
-        if(n < nums.size())
+        // if(n < nums.size())
             return nums.substr(n);
-        // if(s.empty())
-        return "0";
+        
     }
 };
 
