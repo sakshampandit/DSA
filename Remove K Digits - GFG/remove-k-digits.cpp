@@ -28,17 +28,20 @@ class Solution {
           s.pop();   
         }
         
-        string ans = "";
+        // string ans = "";
         while(!s.empty())
         {
-            ans.push_back(s.top());
+            nums[n-1] = (s.top());
             s.pop();
             n--;
         }
-        reverse(ans.begin(), ans.end());
-        return ans == "" ? "0" : ans;
-        cout << ans;
-        return nums.substr(n);
+        
+        
+        // reverse(ans.begin(), ans.end());
+        // return ans == "" ? "0" : ans;
+        // cout << ans;
+        if(n < nums.size())
+            return nums.substr(n);
         // if(s.empty())
         return "0";
     }
