@@ -27,6 +27,10 @@ class GFG {
 
 // User function Template for Java
 
+
+
+// User function Template for Java
+
 class Solution {
     int m = 1000000007;
     public int countStrings(long N) {
@@ -70,4 +74,3 @@ class Solution {
     }
       
 }
-
