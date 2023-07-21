@@ -6,6 +6,7 @@ public:
         {
             if(nums[i]!=i)
                 return i;
+            
         }
         return nums.size();
     }
