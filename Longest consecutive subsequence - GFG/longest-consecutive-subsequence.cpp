@@ -13,7 +13,9 @@ class Solution{
     int findLongestConseqSubseq(int a[], int n)
     {
       //Your code here
-      unordered_set<int>s(a,a+n);
+      unordered_set<int>s;
+      for(int i=0;i<n;i++)
+      s.insert(a[i]);
       int ans=0;
       for(int i=0;i<n;i++)
       {
