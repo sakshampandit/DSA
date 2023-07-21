@@ -24,7 +24,10 @@ class Solution{
         //       mp[sum]=i;
         //       i++;
         // }
-        // return ans; 
+        // return ans;
+        // i=5, sum=25,ans=4, m[0]=-1     
+        // 0 10 17 24 34  
+        // -1 0  1  2  4
         unordered_map<int,int>m;
         m[0]=-1;
         int sum=0,ans=0;
