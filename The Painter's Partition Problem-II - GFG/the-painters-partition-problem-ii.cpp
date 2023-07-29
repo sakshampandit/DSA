@@ -33,8 +33,8 @@ class Solution
             
         }
         l=*max_element(a,a+n),r=sum;
-        if(n==k)
-        return l;
+        // if(n==k)
+        // return l;
         while(l<=r)
         {
             mid=l+(r-l)/2;
