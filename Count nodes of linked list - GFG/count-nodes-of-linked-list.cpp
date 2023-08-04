@@ -31,21 +31,15 @@ class Solution
     int getCount(struct Node* head){
     
         //Code here
-        Node*temp=head;
-        if(temp->next==NULL)
-        return 1;
-        else
+        int c=0;
+        Node*curr=head;
+        while(curr!=NULL)
         {
-            int i=1;
-            while(temp->next!=NULL)
-            {
-                temp=temp->next;
-                i++;
-            }
-            return i;
+            c++;
+            curr=curr->next;
         }
-        
-    
+        return c;
+    // c=5 curr=NULL
     }
 };
     
