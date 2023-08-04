@@ -41,39 +41,41 @@ class Solution
     Node* deleteNode(Node *head, int x)
     {
       //Your code here
-      Node* temp=head;
       if(x==1)
       {
-          head=head->next;
-          temp->next=NULL;
-          head->prev=NULL;
-          delete temp;
+      head=head->next;
+      return head;
       }
       else
-      {   Node* curr=head;
-          int i=i;
+      {
+          int i=1;
+          Node* curr=head;
           while(i<x-1)
           {
-            temp=curr;  
-            curr=curr->next;
-            i++;
+              i++;
+              curr=curr->next;
           }
-            if(curr->next==NULL)
-            {
-            temp->next=curr->next;
-            curr->prev=NULL;
-            delete curr;
-            }
-            else
-            {
-                temp->next=curr->next;
-                curr->next->prev=temp;
-                curr->next=NULL;
-                curr->prev=NULL;
-                delete curr;
-            }
+          if(curr->next->next==NULL)
+          {   Node* temp=curr->next;
+              temp->next=NULL;
+              temp->prev=NULL;
+              curr->next=NULL;
+              delete(temp);
+              return head;
+          }
+        //   curr=1
+        //   i=1     temp=6
+          else
+          {
+              Node*temp=curr->next;
+              curr->next=temp->next;
+              temp->next->prev=curr;
+              temp->next=NULL;
+              temp->prev=NULL;
+              delete(temp);
+              return head;
+          }
       }
-      return head;
     }
 };
 
