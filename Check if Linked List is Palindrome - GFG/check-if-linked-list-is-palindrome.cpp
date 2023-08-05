@@ -31,50 +31,41 @@ struct Node {
 
 class Solution{
   public:
+    //Function to check whether the list is palindrome.
     Node* middle(Node* head)
     {
-        Node *a=head;
-        Node *b=head;
-        while(b!=NULL && b->next!=NULL)
-         {   a=a->next;
-            b=b->next->next;
+        Node* fast=head;
+        Node* slow=head;
+        while(fast!=NULL && fast->next!=NULL)
+        {
+            fast=fast->next->next;
+            slow=slow->next;
         }
-        return a;
+        return slow;
     }
-    
-    //Function to check whether the list is palindrome.
-    bool isPalindrome(Node* head)
+    Node* reverse(Node* head)
+    {
+        if(head==NULL ||head->next==NULL)
+        return head;
+        Node*newhead=reverse(head->next);
+        head->next->next=head;
+        head->next=NULL;
+        return newhead;
+    }
+    bool isPalindrome(Node *head)
     {
         //Your code here
-        if(!head||!head->next)
+        if(head==NULL)
         return true;
-        
         Node* mid=middle(head);
-        Node* prev=NULL;
-
-        Node* curr=mid;
-
-        Node* next;
-
-        while(curr){
-
-            next=curr->next;
-
-            curr->next=prev;
-
-            prev=curr;
-
-            curr=next;
-        }
-        Node* last=prev;
-        Node* temp=head;
-        while(last)
+        Node* last=reverse(mid);
+        Node*curr=head;
+        while(last!=NULL)
         {
-            if(temp->data!=last->data)
+            if(last->data!=curr->data)
             return false;
-            
-            temp=temp->next;
             last=last->next;
+            curr=curr->next;
         }
         return true;
     }
