@@ -53,6 +53,10 @@ int main()
 // } Driver Code Ends
 
 
+
+
+
+
 /* Link list Node:
 
 struct Node
@@ -72,6 +76,8 @@ struct Node
 Node* deleteMid(Node* head)
 {
     // Your Code Here
+    if(head==NULL ||head->next==NULL)
+    return NULL;
     Node*prev=NULL;
     Node*curr=head;
     Node*fcurr=head;
@@ -81,7 +87,7 @@ Node* deleteMid(Node* head)
         prev=curr;
         curr=curr->next;
     }
-    prev->next=prev->next->next;
+    prev->next=curr->next;
     delete(curr);
     return head;
 }
