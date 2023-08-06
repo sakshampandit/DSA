@@ -36,42 +36,34 @@ public:
     vector<pair<int, int>> findPairsWithGivenSum(Node *head, int target)
     {
         // code here
-        Node* left=head;
         Node* right=head;
-        
-        vector<pair<int,int>>m;
-         pair<int,int>p;
+        Node* left=head;
         while(right->next!=NULL)
-        {
-            right=right->next;
-        }
+        right=right->next;
         
+        int sum=0;
+        // vector<int>v;
+        vector<pair<int,int>>ans;
         while(left!=right && left->prev!=right)
         {
-            int sum=left->data+right->data;
+            sum=left->data+right->data;
             if(sum==target)
-            { 
-                
-               
-                p.first=left->data;
-                p.second=right->data;
-                m.push_back(p);
-                
+            {
+                ans.push_back({left->data,right->data});
                 left=left->next;
                 right=right->prev;
-                
-            }else if(sum<target)
+            }
+            else if(sum<target)
             {
                 left=left->next;
-            }else
+            }
+            else
             right=right->prev;
         }
-        return m;
-       
+        return ans;
         
     }
 };
-
 
 //{ Driver Code Starts.
 
