@@ -45,7 +45,7 @@ class Solution
     Node* rotate(Node* head, int k)
     {  if(head==NULL ||head->next==NULL)return head;
         Node* temp=head;
-        Node* prev=new Node(0);
+        Node* prev=NULL;
         int len=length(head);
         if(k==0 || k==len)
         return head;
