@@ -111,12 +111,12 @@ public:
         {
             if(curr->data==curr->next->data)
             {
-                 Node* nextNext = curr->next->next;
-                 if (nextNext) {
-                  nextNext->prev = curr;
-                                }
-                  
-                  curr->next = nextNext;
+                Node* nextNext = curr->next->next;
+                 if (nextNext) 
+                     {
+                nextNext->prev = curr;
+                      }
+                curr->next = nextNext;
             }
             else
             curr=curr->next;
