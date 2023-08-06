@@ -61,74 +61,51 @@ class Solution
 {
     public:
     //Function to add two numbers represented by linked list.
-    struct Node* reverseList(struct Node *head)
+    Node* reverse(Node *head)
     {
-      struct Node* prev=NULL;
-       struct Node* current=head;
-        struct Node* Next;
-        while(current!=NULL)
-        {
-             Next=current->next;
-            current->next=prev;
-            prev=current;
-            current=Next;
-            // Next=current->next;
-            
-        }
-       head=prev;
-        
+        if(head==NULL ||head->next==NULL)
+        return head;
+        Node* newhead=reverse(head->next);
+        head->next->next=head;
+        head->next=NULL;
+        return newhead;
     }
-    //Function to add two numbers represented by linked list.
     struct Node* addTwoLists(struct Node* first, struct Node* second)
     {
         // code here
-        first= reverseList(first);
-        second= reverseList(second);
-        Node*f=first;
-        Node*s=second;
-        int carry=0,sum=0;
-        Node*ans=new Node(0);
-        Node* temp=ans;
-        while(f!=NULL && s!=NULL)
+        Node* f=reverse(first);
+        Node* s=reverse(second);
+        int sum=0,c=0;
+        Node* res=NULL;
+        Node* curr=NULL;
+        while(f!=NULL || s!=NULL)
         {
-            // if(f==NULL)
-            // f->data=0;
-            // if(s==NULL)
-            //  s->data=0;
-            sum= f->data + s->data+ carry;
-            temp->next=new Node(sum%10);
-            carry=sum/10;
-            f=f->next;
-            s=s->next;
-            temp=temp->next;
+            int sum=c+(f?f->data:0)+(s?s->data:0);
+            c=(sum>=10)?1:0;
+            sum=sum%10;
+            Node* temp=new Node(sum);
+            if(res==NULL)
+            {
+                res=temp;
+                curr=temp;
+            }
+            else
+            {
+                curr->next=temp;
+                curr=temp;
+            }
+            if(f)f=f->next;
+            if(s)s=s->next;
         }
-        while (f)
+        if(c>0)
         {
-            
-            sum= f->data+ carry;
-            temp->next=new Node(sum%10);
-            carry=sum/10;
-            f=f->next;
-            temp=temp->next;
+            Node* temp=new Node(c);
+            curr->next=temp;
+            curr=temp;
         }
-         while (s)
-        {
-           
-            sum=  s->data+ carry;
-            temp->next=new Node(sum%10);
-            carry=sum/10;
-            s=s->next;
-            temp=temp->next;
-        }
-        if(carry>0)
-        {
-            Node*t=new Node(carry);
-            temp->next=t;
-        }
-        
-        return reverseList(ans->next);
+        res=reverse(res);
+        return res;
     }
-    
 };
 
 
