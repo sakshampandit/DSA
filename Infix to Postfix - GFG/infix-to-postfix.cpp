@@ -63,36 +63,7 @@ class Solution {
     }
 };
 
-// string infixToPostfix(string str) {
-//     // Your code here
-//     string res = "";
-//     stack<char> s;
-//     for(const auto& c : str){
-//         if(isalnum(c)) res += c;
-//         else{
-//             if(c == '(') s.push('(');
-//             else if(c == ')'){
-//                 while(s.top() != '('){
-//                     res += s.top();
-//                     s.pop();
-//                 }
-//                 s.pop();
-//             }
-//             else{
-//                 while(!s.empty() and prec(c) <= prec(s.top())) {
-//                     res += s.top();
-//                     s.pop();
-//                 }
-//                 s.push(c);
-//             }
-//         }
-//     }
-//     while(!s.empty()) {
-//         res += s.top();
-//         s.pop();
-//     }
-//     return res;
-// }
+
 
 
 //{ Driver Code Starts.
