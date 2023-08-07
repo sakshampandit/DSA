@@ -15,7 +15,7 @@ public:
             s1.push(s2.top());
             s2.pop();
         }
-        s1.push(x);
+        s2.push(x);
         while(!s1.empty())
         {
             s2.push(s1.top());
@@ -25,15 +25,15 @@ public:
     }
 
     int dequeue() {
-        if(s1.empty() && s2.empty())
+        if(s1.empty()&&s2.empty())
         return -1;
-        
         int y=s2.top();
         s2.pop();
         return y;
     }
-    // s1=
-    // s2=4 3 2
+    // s2 4 3 2
+    // s1 2 3
+    // 
 };
 
 //{ Driver Code Starts.
