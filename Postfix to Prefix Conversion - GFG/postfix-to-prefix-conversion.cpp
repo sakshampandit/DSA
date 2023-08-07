@@ -11,14 +11,22 @@ class Solution {
   public:
     string postToPre(string s) {
         // Write your code here
+        // ABC/-AK/L-*
+        // ABC
+        // A/BC
+        // -A/BC AK
+        // -A/BC /AK L
+        // -A/BC -/AKL
+        // *-A/BC-/AKL
+        string res="";
         stack<string>st;
-        string t;
-        for(int i=0;i<s.size();i++)
+        // reverse(s.begin(),s.end());
+        for(auto c:s)
         {
-            if(isalpha(s[i]))
-            {   
+            if(isalnum(c))
+            {
                 string temp;
-                temp+=s[i];
+                temp+=c;
                 st.push(temp);
             }
             else
@@ -27,12 +35,12 @@ class Solution {
                 st.pop();
                 string s2=st.top();
                 st.pop();
-                t=s[i]+s2+s1;
+                string t=c+s2+s1;
                 st.push(t);
             }
-            
         }
-        return t;
+        res=st.top();
+        return res;
     }
 };
 
