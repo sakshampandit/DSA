@@ -7,62 +7,92 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
   public:
-  // precedence function
-  int prec(char c)
-  {
-      if(c=='^')
-      return 3;
-      if(c=='*'||c=='/')
-      return 2;
-      if(c=='+'||c=='-')
-      return 1;
-      else
-      return -1;
-  }
-  
-  // Function to convert an infix expression to a postfix expression.
+    // Function to convert an infix expression to a postfix expression.
+    int precedence(char c)
+    {
+        if(c=='^')
+        return 3;
+        else if(c=='/'|| c=='*')
+        return 2;
+        else if(c=='+'||c=='-')
+        return 1;
+        else
+        return -1;
+    }
     string infixToPostfix(string s) {
         // Your code here
-        stack<char> st;
-        string res;
+        stack<char>st;
+        string res="";
         for(int i=0;i<s.size();i++)
-        {   //checking for a-z and A-Z
-            // push it directly
-            if((s[i]>='a' && s[i]<='z') || (s[i]>='A' && s[i]<='Z'))
+        {   
+            // CONDITION 1
+            if(isalnum(s[i]))
             res+=s[i];
-            // opening bracket push it
+            // CONDITION 2
             else if(s[i]=='(')
             st.push(s[i]);
-            //closing bracket pop until you encounter opening bracket 
+            
+            // CONDITION 3
             else if(s[i]==')')
             {
                 while(!st.empty() && st.top()!='(')
                 {
                     res+=st.top();
                     st.pop();
-                    
                 }
-               if(!st.empty())
+                if(!st.empty())
                 st.pop();
             }
-            else
+            // CONDITION 4
+            else 
             {
-               while(!st.empty() && prec(st.top())>=prec(s[i]))
-               {
-                   res+=st.top();
-                   st.pop();
-               }
-               st.push(s[i]);
-               
+                while(!st.empty() && precedence(st.top())>=precedence(s[i]))
+                {
+                    res+=st.top();
+                    st.pop();
+                }
+                st.push(s[i]);
             }
         }
         while(!st.empty())
-            {res+=st.top();
-            st.pop();}
-            
-            return res;
+        {
+            res+=st.top();
+            st.pop();
+        }
+        return res;
     }
 };
+
+// string infixToPostfix(string str) {
+//     // Your code here
+//     string res = "";
+//     stack<char> s;
+//     for(const auto& c : str){
+//         if(isalnum(c)) res += c;
+//         else{
+//             if(c == '(') s.push('(');
+//             else if(c == ')'){
+//                 while(s.top() != '('){
+//                     res += s.top();
+//                     s.pop();
+//                 }
+//                 s.pop();
+//             }
+//             else{
+//                 while(!s.empty() and prec(c) <= prec(s.top())) {
+//                     res += s.top();
+//                     s.pop();
+//                 }
+//                 s.push(c);
+//             }
+//         }
+//     }
+//     while(!s.empty()) {
+//         res += s.top();
+//         s.pop();
+//     }
+//     return res;
+// }
 
 
 //{ Driver Code Starts.
