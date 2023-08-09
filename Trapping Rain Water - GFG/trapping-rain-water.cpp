@@ -11,19 +11,20 @@ class Solution{
     public:
     long long trappingWater(int a[], int n){
         // code here
-         stack<int> s;
-        long long ans = 0; // Change to long long for accurate results
-
-        for (int i = 0; i < n; i++) {
-            while (!s.empty() && a[s.top()] < a[i]) {
-                int ele = s.top();
+        stack<int>s;
+        long long ans=0;
+        for(int i=0;i<n;i++)
+        {
+            while(!s.empty() && a[s.top()]<a[i])
+            {
+                int ele=s.top();
                 s.pop();
-                
-                if (!s.empty()) {
-                    int ele2 = s.top();
-                    int distance = i - ele2 - 1;
-                    int bounded_height = min(a[ele2], a[i]) - a[ele];
-                    ans += static_cast<long long>(bounded_height) * distance; // Ensure correct data type
+                if (!s.empty())
+                {
+                     int ele2 = s.top();
+                     int distance = i - ele2 - 1;
+                     int bounded_height = min(a[ele2], a[i]) - a[ele];
+                     ans += static_cast<long long>(bounded_height) * distance;
                 }
             }
             s.push(i);
