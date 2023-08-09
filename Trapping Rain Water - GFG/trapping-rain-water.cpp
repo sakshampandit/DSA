@@ -9,39 +9,26 @@ class Solution{
 
     // Function to find the trapped water between the blocks.
     public:
-    long long trappingWater(int arr[], int n){
+    long long trappingWater(int a[], int n){
         // code here
-        long long left=0,right=n-1,leftbar=arr[0],rightbar=arr[n-1],ans=0;
-        while(left<=right)
-        {
-           
-           if(leftbar<rightbar)//we will find the second highest building which will be the limit to fill water
-           {
-            if(arr[left]>leftbar)
-            {
-                leftbar=arr[left];
-            }
-            else
-            {
-                ans+=leftbar-arr[left];
-                left++;
-            }
-        }
-        else
-        {
-            if(arr[right]>rightbar)
-            {
-                rightbar=arr[right];
+         stack<int> s;
+        long long ans = 0; // Change to long long for accurate results
+
+        for (int i = 0; i < n; i++) {
+            while (!s.empty() && a[s.top()] < a[i]) {
+                int ele = s.top();
+                s.pop();
                 
+                if (!s.empty()) {
+                    int ele2 = s.top();
+                    int distance = i - ele2 - 1;
+                    int bounded_height = min(a[ele2], a[i]) - a[ele];
+                    ans += static_cast<long long>(bounded_height) * distance; // Ensure correct data type
+                }
             }
-            else
-            {
-                ans+=rightbar-arr[right];
-                right--;
-            }
+            s.push(i);
         }
-    }
-    return ans;
+        return ans;
     }
 };
 
