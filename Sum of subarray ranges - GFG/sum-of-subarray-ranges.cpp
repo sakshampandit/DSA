@@ -6,23 +6,22 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
   public:
-    long long subarrayRanges(int n, vector<int> &nums) {
+    long long subarrayRanges(int n, vector<int> &a) {
         // code here
         long long sum=0;
         for(int i=0;i<n;i++)
-        {
-            int ma=nums[i];
-            int mi=nums[i];
+        {  int mini=a[i];
+           int maxi=a[i];
             for(int j=i;j<n;j++)
             {
-                ma=max(ma,nums[j]);
-                mi=min(mi,nums[j]);
-                sum+=(ma-mi);
+                mini=min(mini,a[j]);
+                maxi=max(maxi,a[j]);
+                sum+=maxi-mini;
             }
         }
         return sum;
-        
     }
+    
 };
 
 //{ Driver Code Starts.
