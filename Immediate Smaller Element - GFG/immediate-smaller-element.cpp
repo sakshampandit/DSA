@@ -5,35 +5,37 @@ using namespace std;
 
 // } Driver Code Ends
 //User function template for C++
-//User function template for C++
-//User function template for C++
 class Solution{
-public:    
-    void immediateSmaller(vector<int>&arr, int n) {
-        //  code here
-       // vector<int> arr1=arr;
-        stack<int> s;
-        vector<int> v(n);
-        for(int i=n-1; i>=0; i--){
-            if(!s.empty()&&s.top()<arr[i]){
-            v[i]=s.top();
-            s.push(arr[i]);}
-            else{
-                v[i]=-1;
-                s.push(arr[i]);}
-                
-            }
-        
-        for(int i=0; i<n;i++){
-            
-            arr[i]=v[i];
-        }
-    }
+public:	
+	void immediateSmaller(vector<int>&arr, int n) {
+	    //  code here
+	    stack<int>s;
+	    vector<int>ans;
+	    for(int i=n-1;i>=0;i--)
+	    {
+	        if(s.empty())
+	        {
+	            ans.push_back(-1);
+	            s.push(arr[i]);
+	        }
+	          if(s.top()<arr[i])
+	          {
+	              ans.push_back(s.top());
+	              s.push(arr[i]);
+	          }
+	          else{
+	              ans.push_back(-1);
+	              s.push(arr[i]);
+	          }
+	    }
+	    reverse(ans.begin(),ans.end());
+	    for(int i=0;i<n;i++)
+	    {
+	        arr[i]=ans[i];
+	    }
+	}
 
 };
-
-
-
 
 
 //{ Driver Code Starts.
