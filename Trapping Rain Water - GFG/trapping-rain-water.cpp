@@ -24,7 +24,7 @@ class Solution{
                      int ele2 = s.top();
                      int distance = i - ele2 - 1;
                      int bounded_height = min(a[ele2], a[i]) - a[ele];
-                     ans += static_cast<long long>(bounded_height) * distance;
+                     ans +=bounded_height * distance;
                 }
             }
             s.push(i);
