@@ -1,12 +1,12 @@
 class Solution {
 public:
-    bool search(vector<int>& nums, int k) {
-        int l=0,r=nums.size()-1,mid;
+    bool search(vector<int>& nums, int target) {
+        int l=0,r=nums.size()-1;
         while(l<=r)
         {
-            mid=l+(r-l)/2;
-           if(nums[mid]==k)
-               return true;
+            int mid=l+(r-l)/2;
+            if(nums[mid]==target)
+                return true;
             else if(nums[l]==nums[mid] && nums[mid]==nums[r])
             {
                 l=l+1;
@@ -15,22 +15,19 @@ public:
             }
             else if(nums[l]<=nums[mid])
             {
-                if(nums[l]<=k && nums[mid]>k)
+                if(nums[l]<=target && target<nums[mid])
                     r=mid-1;
                 else
                     l=mid+1;
             }
             else
             {
-                if(nums[mid]<k && nums[r]>=k)
+                if(nums[mid]<target && target<=nums[r])
                     l=mid+1;
                 else
                     r=mid-1;
             }
-//             1 0 1 1 1
-//             0 1 2 3 4
-//                
         }
-         return false;
+        return false;
     }
 };
