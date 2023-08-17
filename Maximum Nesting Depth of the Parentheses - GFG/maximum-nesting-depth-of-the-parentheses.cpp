@@ -7,16 +7,18 @@ class Solution {
   public:
     int maxDepth(string s) {
         // code here
-        int bracket=0,ans=0;
-        for(auto x:s)
+        int ans=0,c=0;
+        for(int i=0;i<s.size();i++)
         {
-            if(x=='(')
-            bracket++;
-            if(x==')')
-            bracket--;
-            ans=max(ans,bracket);
+            ans=max(ans,c);
+            if(s[i]=='(')
+            c++;
+            else  if(s[i]==')')
+            c--;
         }
         return ans;
+        // ans=3
+        // c=0
     }
 };
 
