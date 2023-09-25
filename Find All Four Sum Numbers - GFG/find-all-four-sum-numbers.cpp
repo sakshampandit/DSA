@@ -10,40 +10,39 @@ class Solution{
     public:
     // arr[] : int input array of integers
     // k : the quadruple sum required
-    vector<vector<int> > fourSum(vector<int> &arr, int k) {
-        int n=arr.size();
-         vector<vector<int> >res;
-       sort(arr.begin(),arr.end());
-       for(int i=0;i<n-3;i++)
-       {
-           if(i>0 and arr[i]==arr[i-1])
-               continue;
-        for(int j=i+1;j<n-2;j++)
+    vector<vector<int> > fourSum(vector<int> &a, int k) {
+        // Your code goes here'
+        vector<vector<int>>ans;
+        set<vector<int>>s;
+        sort(a.begin(),a.end());
+        int n=a.size();
+        for(int i=0;i<n;i++)
         {
-            if(j>i+1 and arr[j]==arr[j-1])
-              continue;
-            int l=j+1;
-            int r=n-1;
-            while(r>l)
+            for(int j=i+1;j<n;j++)
             {
-                if(arr[i]+arr[j]+arr[l]+arr[r]==k)
+                int low=j+1,high=n-1;
+                while(low<high)
                 {
-                    res.push_back({arr[i],arr[j],arr[l],arr[r]});
-                    l++;r--;
-                    while(l<r and arr[l]==arr[l-1]) l++;
-                    while(l<r and arr[r]==arr[r+1])r--;
+                    int sum=a[i]+a[j]+a[low]+a[high];
+                    if(sum==k)
+                    {
+                        s.insert({a[i],a[j],a[low],a[high]});
+                        low++;
+                        high--;
+                    }
+                    else if(sum>k)
+                    high--;
+                    else
+                    low++;
                 }
-                    
-                else if(arr[i]+arr[j]+arr[l]+arr[r]>k)
-                    r--;
-                else
-                    l++;
             }
         }
-       }
-       return res;
+        for(auto it:s)
+        ans.push_back(it);
+        return ans;
     }
 };
+
 
 //{ Driver Code Starts.
 int main() {
